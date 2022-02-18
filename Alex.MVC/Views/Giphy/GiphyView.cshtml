@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Alex.MVC.Models.GiphyModel>
+
+@{
+    ViewBag.Title = "Fetch most trended GIFs in Giphy repository and search by criteria.";
+}
+
+<table class="table">
+    <tr>
+        <th></th>
+    </tr>
+
+    @*<tr>
+        <td>
+            <img src="https://media3.giphy.com/media/xF8lInTTUKo9x55NIW/giphy.gif?cid=aa84f86ceqd49tn1li8zffzbk8tr1bb3p5u6v65x7yinyv4m&amp;rid=giphy.gif&amp;ct=g" width="100" height="100" />
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <img src="https://media1.giphy.com/media/dewrEjgercJKGD7jxN/giphy.gif?cid=aa84f86ceqd49tn1li8zffzbk8tr1bb3p5u6v65x7yinyv4m&amp;rid=giphy.gif&amp;ct=g" width="100" height="100" />
+        </td>
+    </tr>*@
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <img src="@Url.Content(item.Url)" width="100" height="100" />
+            </td>
+        </tr>
+    }
+</table>
+@using (Html.BeginForm("Search", "Giphy", FormMethod.Get))
+{
+    @Html.TextBox("criteria")
+    <input type="submit" value="search" />
+}
